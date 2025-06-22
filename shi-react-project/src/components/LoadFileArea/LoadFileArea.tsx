@@ -57,7 +57,6 @@ export const LoadFileArea: FC<LoadFileAreaProps> = (props) => {
             setFormStatus('pending');
             try {
               await handleFormSubmit(file);
-
               setFormStatus('done');
             } catch (error) {
               setFormStatus('error');

@@ -1,6 +1,6 @@
 export const csvApi = {
   async getGalacticStatsOut(formData: FormData) {
-    const response = await fetch('http://localhost:3000/aggregate?rows=10000', {
+    const response = await fetch('http://localhost:3000/aggregate?rows=10000&withErrors=true', {
       method: 'POST',
       body: formData,
     });

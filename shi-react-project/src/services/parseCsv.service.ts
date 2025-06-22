@@ -29,12 +29,24 @@ export const parseCsvService = {
   ) {
     if (!response.body) return;
     const reader = response.body.getReader();
+    let buffer = '';
+
     while (true) {
       try {
         const { done, value } = await reader.read();
         if (done) break;
-        const parsedValue = JSON.parse(new TextDecoder().decode(value));
-        callBack(parsedValue, response.ok);
+
+        buffer += new TextDecoder().decode(value);
+
+        const lines = buffer.split('\n');
+        buffer = lines.pop() || '';
+
+        for (const line of lines) {
+          if (line.trim()) {
+            const parsedValue = JSON.parse(line);
+            callBack(parsedValue, response.ok);
+          }
+        }
       } catch (error) {
         throw new Error(`Ошибка парсинга: ${error}`);
       }
@@ -44,11 +56,6 @@ export const parseCsvService = {
   async createCsv() {
     try {
       const response = await csvApi.createCsv();
-
-      if (!response.ok) {
-        throw new Error(`Статус: ${response.status}`);
-      }
-
       const blob = await response.blob();
 
       const downloadUrl = window.URL.createObjectURL(blob);
