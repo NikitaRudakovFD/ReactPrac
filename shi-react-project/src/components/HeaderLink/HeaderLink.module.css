@@ -1,0 +1,11 @@
+.link {
+  display: flex;
+  gap: 16px;
+  font-size: 30px;
+  font-weight: 400;
+  text-decoration: none;
+}
+
+.active {
+  text-decoration: underline;
+}

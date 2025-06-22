@@ -1,0 +1,16 @@
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  row-gap: 39px;
+  column-gap: 10px;
+
+  width: 100%;
+  margin-bottom: 150px;
+}
+
+.modalContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 13px;
+  width: 100%;
+}

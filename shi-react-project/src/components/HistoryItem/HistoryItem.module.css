@@ -1,0 +1,23 @@
+.container {
+  display: flex;
+  width: 100%;
+  gap: 40px;
+}
+
+.contentWrapper {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 40px;
+  background-color: #cb81ff;
+  padding: 28px 20px;
+}
+
+.contentWithIcon {
+  display: flex;
+}
+
+.disabled {
+  color: #8f64ae;
+}
