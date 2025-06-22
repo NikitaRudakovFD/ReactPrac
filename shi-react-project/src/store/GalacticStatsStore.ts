@@ -18,43 +18,40 @@ export const useGalacticStatsStore = create<GalacticStats>((set, get) => ({
 
   async addStats(file: File | undefined) {
     const currentHistory = get();
-
-    await parseCsvService
-      .parseGalacticStats(file, (row: GalacticStatsType) => {
+    try {
+      await parseCsvService.parseGalacticStats(file, (row: GalacticStatsType) => {
         set({
           stats: row,
         });
-      })
-      .then(() => {
-        set({
-          history: [
-            ...(currentHistory?.history || []),
-            {
-              fileName: file?.name || '',
-              date: formatted,
-              status: true,
-              stats: currentHistory?.stats,
-              id: Math.random(),
-            },
-          ],
-        });
-      })
-      .catch(() => {
-        set({
-          history: [
-            ...(currentHistory?.history || []),
-            {
-              fileName: file?.name || '',
-              date: formatted,
-              status: false,
-              stats: currentHistory?.stats,
-              id: Math.random(),
-            },
-          ],
-        });
-
-        throw new Error('Ошибка сервера');
       });
+
+      set({
+        history: [
+          ...(currentHistory?.history || []),
+          {
+            fileName: file?.name || '',
+            date: formatted,
+            status: true,
+            stats: currentHistory?.stats,
+            id: Math.random(),
+          },
+        ],
+      });
+    } catch (error) {
+      set({
+        history: [
+          ...(currentHistory?.history || []),
+          {
+            fileName: file?.name || '',
+            date: formatted,
+            status: false,
+            stats: currentHistory?.stats,
+            id: Math.random(),
+          },
+        ],
+      });
+      throw new Error(`Ошибка сервера ${error}`);
+    }
 
     get().setToLocalStorage('history', get().history || []);
   },

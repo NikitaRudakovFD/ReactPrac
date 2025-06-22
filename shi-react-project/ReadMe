@@ -1,39 +1,17 @@
 Архитектура моего приложения:
 
-1. **Установите зависимости:**
+1. Установите зависимости - npm install
 
-   ```bash
-   npm install
-   ```
+2. Для запуска - npm run dev
+  
 
-2. **Для запуска проекта воспользуйтесь**
+3. Сборка проекта -npm run build
 
-   ```bash
-   npm run dev
-   ```
+4. Просмотр сборки - npm run preview
 
-   Проект будет доступен по адресу [http://localhost:5173](http://localhost:5173) (порт может отличаться, смотрите вывод в консоли).
+5. Prettier-npm run format
 
-3. **Сборка проекта:**
-
-   ```bash
-   npm run build
-   ```
-
-4. **Просмотр production-сборки:**
-
-   ```bash
-   npm run preview
-   ```
-
-5. ** Форматирование:**
-
-   ```bash
-   npm run format
-   ```
-
-> ⚠️ Для корректной работы необходим запущенный backend на `http://localhost:3000` (эндпоинты `/aggregate` и `/report`).
-
+6. Eslint - npm run lint
 ---
 
 ## Описание архитектуры
