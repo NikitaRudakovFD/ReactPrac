@@ -37,6 +37,7 @@ export const useGalacticStatsStore = create<GalacticStats>((set, get) => ({
           },
         ],
       });
+      get().setToLocalStorage('history', get().history || []);
     } catch (error) {
       set({
         history: [
@@ -50,10 +51,9 @@ export const useGalacticStatsStore = create<GalacticStats>((set, get) => ({
           },
         ],
       });
+      get().setToLocalStorage('history', get().history || []);
       throw new Error(`Ошибка сервера ${error}`);
     }
-
-    get().setToLocalStorage('history', get().history || []);
   },
 
   deleteHistory(id: number) {

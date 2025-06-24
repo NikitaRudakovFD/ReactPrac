@@ -4,6 +4,10 @@ export const LocalStorageApi = {
   },
 
   get(key: string) {
-    return JSON.parse(localStorage.getItem(key) || ' ');
+    const item = localStorage.getItem(key);
+    if (!item) {
+      return;
+    }
+    return JSON.parse(item);
   },
 };
