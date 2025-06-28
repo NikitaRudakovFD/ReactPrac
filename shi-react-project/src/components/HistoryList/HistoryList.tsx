@@ -1,43 +1,21 @@
-import { useEffect } from 'react';
+import { type FC } from 'react';
+import { HistoryItem } from '../HistoryItem/HistoryItem';
+import type { History } from '../../types/types';
+import $ from './HistoryList.module.css';
 
-import { HistoryItemType } from '@app-types/history';
-import { HistoryItem } from '@components/HistoryItem';
-import { useHistoryStore } from '@store/historyStore';
-import { removeFromHistory } from '@utils/storage';
-import { useShallow } from 'zustand/react/shallow';
+export const HistoryList: FC<HistoryListProps> = (props) => {
+  const { history, deleteHistory } = props;
 
-import styles from './HistoryList.module.css';
-
-export const HistoryList = () => {
-    const { history, showModal, setSelectedItem, removeFromHistoryStore, updateHistoryFromStorage } = useHistoryStore(
-        useShallow((state) => ({
-            showModal: state.showModal,
-            setSelectedItem: state.setSelectedItem,
-            removeFromHistoryStore: state.removeFromHistory,
-            history: state.history,
-            updateHistoryFromStorage: state.updateHistoryFromStorage,
-        }))
-    );
-
-    useEffect(() => {
-        updateHistoryFromStorage();
-    }, [updateHistoryFromStorage]);
-
-    const handleItemClick = (item: HistoryItemType) => {
-        setSelectedItem(item);
-        showModal();
-    };
-
-    const handleDeleteItem = (id: string) => {
-        removeFromHistory(id);
-        removeFromHistoryStore(id);
-    };
-
-    return (
-        <div className={styles.list}>
-            {history.map((item) => (
-                <HistoryItem key={item.id} item={item} onClick={handleItemClick} onDelete={handleDeleteItem} />
-            ))}
-        </div>
-    );
+  return (
+    <div className={$.container}>
+      {history?.map((item) => (
+        <HistoryItem {...item} key={item.id} deleteHistory={deleteHistory} />
+      ))}
+    </div>
+  );
 };
+
+export interface HistoryListProps {
+  history: History[] | null;
+  deleteHistory: (id: number) => void;
+}

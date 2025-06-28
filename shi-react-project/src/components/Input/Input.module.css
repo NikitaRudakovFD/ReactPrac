@@ -1,0 +1,46 @@
+.defaultWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 35px;
+  gap: 10px;
+}
+
+.label {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  border-radius: 10px;
+  padding: 15px 27px;
+}
+
+.label:hover {
+  cursor: pointer;
+}
+
+.labelWrapper {
+  width: 100%;
+  display: flex;
+  gap: 10px;
+}
+
+.default {
+  background-color: #fff;
+}
+.uploaded,
+.pending {
+  background-color: #cb81ff;
+}
+.done,
+.doneCreate {
+  background-color: #d4fae6;
+}
+.error,
+.errorCreate {
+  background-color: #ff5f00;
+  color: #fff;
+}
+
+.errorDescr {
+  color: #ff5f00;
+}

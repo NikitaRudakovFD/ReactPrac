@@ -1,43 +1,23 @@
-.root {
-    display: flex;
-    gap: 40px;
+.container {
+  display: flex;
+  width: 100%;
+  gap: 40px;
 }
 
-.item {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 100%;
-    padding: 16px 20px;
-    border-radius: var(--border-radius-xl);
-    background-color: var(--color-accent-purple);
+.contentWrapper {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 40px;
+  background-color: #cb81ff;
+  padding: 28px 20px;
 }
 
-.deleteButton {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-    width: 87px;
-    height: 87px;
-    min-width: 87px;
-    background-color: var(--color-white);
-    border-radius: var(--border-radius-s);
-    color: var(--color-accent-orange);
-}
-
-.fileName {
-    display: flex;
-    align-items: center;
-    gap: 5px;
-    width: 350px;
-    color: var(--color-black);
-}
-
-.icon {
-    flex-shrink: 0;
+.contentWithIcon {
+  display: flex;
 }
 
 .disabled {
-    pointer-events: none;
+  color: #8f64ae;
 }

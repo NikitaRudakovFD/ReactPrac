@@ -1,0 +1,15 @@
+.form {
+  background-color: #eacdff;
+  border-radius: 40px;
+  padding: 40px 0 40px 0;
+  width: 100%;
+  border: 1px solid #201b10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.drag {
+  background-color: #d4fae6;
+  border-color: #d4fae6;
+}

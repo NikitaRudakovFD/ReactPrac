@@ -1,26 +1,22 @@
-import { MainLayout } from '@components/MainLayout';
-import { GeneratePage } from '@pages/Generate';
-import { HistoryPage } from '@pages/History';
-import { HomePage } from '@pages/Home';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { Main } from './pages/Main/MainPage';
+import { Layout } from './layout/layout';
+import { GeneratorPage } from './pages/GeneratorPage/GeneratorPage';
+import './App.module.css';
+import { HistoryPage } from './pages/HistoryPage/HistoryPage';
 
 function App() {
-    return (
-        <Router
-            future={{
-                v7_startTransition: true,
-                v7_relativeSplatPath: true,
-            }}
-        >
-            <Routes>
-                <Route element={<MainLayout />}>
-                    <Route path="/" element={<HomePage />} />
-                    <Route path="/generate" element={<GeneratePage />} />
-                    <Route path="/history" element={<HistoryPage />} />
-                </Route>
-            </Routes>
-        </Router>
-    );
+  return (
+    <BrowserRouter>
+      <Layout>
+        <Routes>
+          <Route index element={<Main />} />
+          <Route path="/generator" element={<GeneratorPage />} />
+          <Route path="/history" element={<HistoryPage />} />
+        </Routes>
+      </Layout>
+    </BrowserRouter>
+  );
 }
 
 export default App;

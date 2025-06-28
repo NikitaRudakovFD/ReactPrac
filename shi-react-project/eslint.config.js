@@ -1,76 +1,40 @@
-import pluginJs from "@eslint/js";
-import prettierConfig from "eslint-config-prettier";
-import pluginImport from "eslint-plugin-import";
-import pluginReact from "eslint-plugin-react";
-import pluginReactHooks from "eslint-plugin-react-hooks";
-import pluginReactRefresh from "eslint-plugin-react-refresh";
-import globals from "globals";
-import tseslint from "typescript-eslint";
+import globals from 'globals';
+import tseslint from 'typescript-eslint';
+import js from '@eslint/js';
+import { defineConfig } from 'eslint/config';
 
-// Fix for https://github.com/sindresorhus/globals/issues/140
-delete globals.browser["AudioWorkletGlobalScope "];
+export default defineConfig([
+  js.configs.recommended,
 
-export default [
+  ...tseslint.configs.recommended,
   {
-    ignores: [
-      "dist/**",
-      "node_modules/**",
-      "build/**",
-      "*.min.js",
-      "coverage/**",
-      ".vite/**"
-    ]
-  },
-  { files: ["**/*.{js,mjs,cjs,ts,jsx,tsx}"] },
-  {
+    files: ['**/*.{js,jsx,ts,tsx}'],
     languageOptions: {
       globals: {
         ...globals.browser,
         ...globals.node,
       },
-    },
-  },
-  pluginJs.configs.recommended,
-  ...tseslint.configs.recommended,
-  prettierConfig,
-  {
-    plugins: {
-      react: pluginReact,
-      "react-hooks": pluginReactHooks,
-      "react-refresh": pluginReactRefresh,
-      import: pluginImport,
+      parserOptions: {
+        ecmaFeatures: {
+          jsx: true,
+        },
+        ecmaVersion: 'latest',
+        sourceType: 'module',
+      },
     },
     rules: {
-      "react/jsx-uses-react": "error",
-      "react/jsx-uses-vars": "error",
-      "react-refresh/only-export-components": "warn",
-      '@typescript-eslint/no-unused-vars': [
-        'error',
-        {
-          argsIgnorePattern: '^_',
-          varsIgnorePattern: '^_',
-          caughtErrorsIgnorePattern: '^_',
-        },
-      ],
-      'import/order': [
-        'error',
-        {
-          groups: ['builtin', 'external', 'internal', 'parent', 'sibling', 'index', 'object', 'type'],
-          pathGroups: [
-            {
-              pattern: 'react',
-              group: 'external',
-              position: 'before',
-            },
-          ],
-          pathGroupsExcludedImportTypes: ['react'],
-          'newlines-between': 'always',
-          alphabetize: {
-            order: 'asc',
-            caseInsensitive: true,
-          },
-        },
-      ],
+      'react/react-in-jsx-scope': 'off',
+      'react/jsx-uses-react': 'off',
+      '@typescript-eslint/no-unused-vars': 'warn',
+      'no-console': ['warn', { allow: ['warn', 'error'] }],
     },
   },
-]; 
+
+  {
+    files: ['**/*.{ts,tsx}'],
+    rules: {
+      '@typescript-eslint/explicit-module-boundary-types': 'off',
+    },
+  },
+]);
+

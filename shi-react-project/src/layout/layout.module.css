@@ -1,0 +1,26 @@
+.logo {
+  margin-right: 40px;
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  margin-bottom: 80px;
+}
+
+.titleContent {
+  height: max-content;
+  padding: 6px;
+  background-color: #cb81ff;
+  margin-right: auto;
+}
+
+.title {
+  font-weight: 500;
+  font-size: 30px;
+}
+
+.navLinkContainer {
+  display: flex;
+  gap: 20px;
+}

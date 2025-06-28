@@ -1,1 +1,0 @@
-export { Smile } from './Smile';
