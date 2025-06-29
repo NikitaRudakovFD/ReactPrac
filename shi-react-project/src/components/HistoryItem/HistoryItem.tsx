@@ -15,7 +15,7 @@ export const HistoryItem: FC<HistoryItemProps> = (props) => {
   return (
     <>
       {' '}
-      <div className={$.container}>
+      <div className={$.container} data-testid='historyItem'>
         <div
           className={$.contentWrapper}
           onClick={() => {

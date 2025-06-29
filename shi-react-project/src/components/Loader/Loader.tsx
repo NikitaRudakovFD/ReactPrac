@@ -4,7 +4,7 @@ import $ from './Loader.module.css';
 export const Loader: FC<LoaderProps> = ({ loadStatus }) => {
   if (loadStatus !== 'pending') return null;
 
-  return <div className={$.loader}></div>;
+  return <div data-testid="loader" className={$.loader}></div>;
 };
 
 interface LoaderProps {

@@ -24,7 +24,7 @@ export enum GalacticDescrByKey {
   less_spent_value = '',
 }
 
-export interface History {
+export interface HistoryType {
   fileName: string;
   status: boolean;
   date: string;

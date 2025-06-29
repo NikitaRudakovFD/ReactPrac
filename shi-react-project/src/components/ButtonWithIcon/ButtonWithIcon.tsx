@@ -6,6 +6,7 @@ export const ButtonWithIcon: FC<ButtonWithIconProps> = (props) => {
 
   return (
     <button
+      data-testid='deleteButton'
       className={`${$.button} ${variant === 'white' ? $.white : ''}`}
       onClick={(e) => {
         e.preventDefault();

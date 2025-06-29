@@ -60,6 +60,7 @@ export const parseCsvService = {
 
       const downloadUrl = window.URL.createObjectURL(blob);
       const link = document.createElement('a');
+      link.download = 'report.csv';
       link.href = downloadUrl;
 
       document.body.appendChild(link);

@@ -7,22 +7,30 @@ export const GalacticList: FC<GalacticListProps> = (props) => {
   const { galacticStats, isModal } = props;
 
   return (
-    <div className={isModal ? $.modalContainer : $.container}>
-      {Object.entries(galacticStats)
-        .filter((stat) => stat[0] !== 'less_spent_value')
-        .map((item, index) => (
-          <GalacticStatsItem
-            stat={item[0] as keyof GalacticStatsType}
-            value={item[1]}
-            key={index}
-            isModal={isModal}
-          />
-        ))}
-    </div>
+    <>
+      {galacticStats ? (
+        <div className={isModal ? $.modalContainer : $.container}>
+          {Object.entries(galacticStats)
+            .filter((stat) => stat[0] !== 'less_spent_value')
+            .map((item, index) => (
+              <GalacticStatsItem
+                stat={item[0] as keyof GalacticStatsType}
+                value={item[1]}
+                key={index}
+                isModal={isModal}
+              />
+            ))}
+        </div>
+      ) : (
+        <div className={$.highLight} data-testid='highLight'>
+          Здесь <br /> появятся хайлайты
+        </div>
+      )}
+    </>
   );
 };
 
 export interface GalacticListProps {
-  galacticStats: GalacticStatsType;
+  galacticStats: GalacticStatsType | null;
   isModal?: boolean;
 }

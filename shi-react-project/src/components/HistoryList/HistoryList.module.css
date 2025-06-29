@@ -3,3 +3,10 @@
   flex-direction: column;
   gap: 7.5px;
 }
+
+.buttonWrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}

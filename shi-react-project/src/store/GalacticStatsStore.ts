@@ -1,6 +1,6 @@
 import { create } from 'zustand';
 import { parseCsvService } from '../services/parseCsv.service';
-import type { GalacticStatsType, History } from '../types/types';
+import type { GalacticStatsType, HistoryType } from '../types/types';
 import { LocalStorageService } from '../services/localeStorage.service';
 
 const today = new Date();
@@ -72,11 +72,11 @@ export const useGalacticStatsStore = create<GalacticStats>((set, get) => ({
     get().setToLocalStorage('history', get().history || []);
   },
 
-  getToLocaleStorage(key: string): History[] {
+  getToLocaleStorage(key: string): HistoryType[] | undefined {
     return LocalStorageService.getToLocaleStorage(key);
   },
 
-  setToLocalStorage(key: string, value: History[]) {
+  setToLocalStorage(key: string, value: HistoryType[]) {
     LocalStorageService.setToLocalStorage(key, value);
   },
 }));
@@ -86,7 +86,7 @@ interface GalacticStats {
   addStats: (file: File | undefined) => Promise<void>;
   deleteAllHistory: () => void;
   deleteHistory: (id: number) => void;
-  history: History[] | null;
-  getToLocaleStorage: (key: string) => History[];
-  setToLocalStorage: (key: string, value: History[]) => void;
+  history: HistoryType[] | null;
+  getToLocaleStorage: (key: string) => HistoryType[] | undefined;
+  setToLocalStorage: (key: string, value: HistoryType[]) => void;
 }

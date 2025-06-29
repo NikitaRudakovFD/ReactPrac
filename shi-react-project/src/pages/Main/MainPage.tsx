@@ -17,20 +17,14 @@ export const Main = () => {
 
   return (
     <>
-      <div className={$.container}>
+      <div className={$.container} data-testid="main-page">
         <div className={$.loadAreaContainer}>
           <h2 className={$.title}>
             Загрузите <b>csv</b> файл и получите <b>полную информацию</b> о нём за сверхнизкое время
           </h2>
           <LoadFileArea handleFormSubmit={handleFormSubmit} />
         </div>
-        {stats ? (
           <GalacticList galacticStats={stats} />
-        ) : (
-          <div className={$.highLight}>
-            Здесь <br /> появятся хайлайты
-          </div>
-        )}
       </div>
     </>
   );

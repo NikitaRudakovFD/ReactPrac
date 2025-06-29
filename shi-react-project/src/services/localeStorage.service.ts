@@ -1,4 +1,5 @@
 import { LocalStorageApi } from '../api/localStorage.api';
+import type { HistoryType } from '../types/types';
 
 export const LocalStorageService = {
   getToLocaleStorage(key: string) {
@@ -6,7 +7,7 @@ export const LocalStorageService = {
     return result;
   },
 
-  setToLocalStorage(key: string, value: unknown) {
+  setToLocalStorage(key: string, value: HistoryType[]) {
     LocalStorageApi.set(key, value);
   },
 };

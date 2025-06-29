@@ -8,7 +8,10 @@
     "build": "tsc -b && vite build",
     "preview": "vite preview",
     "format": "npx prettier --write .",
-    "lint": "npx eslint ."
+    "lint": "npx eslint .",
+    "test": "vitest",
+    "test:e2e": "playwright test",
+    "test:e2e:install": "npx playwright install"
   },
   "dependencies": {
     "react": "^19.1.0",
@@ -17,6 +20,11 @@
     "zustand": "^5.0.5"
   },
   "devDependencies": {
+    "@playwright/test": "^1.53.1",
+    "@testing-library/dom": "^10.4.0",
+    "@testing-library/react": "^16.3.0",
+    "@testing-library/user-event": "^14.6.1",
+    "@types/node": "^24.0.7",
     "@types/react": "^19.1.2",
     "@types/react-dom": "^19.1.2",
     "@vitejs/plugin-react": "^4.4.1",
@@ -25,9 +33,11 @@
     "eslint-plugin-react": "^7.37.5",
     "eslint-plugin-react-hooks": "^6.0.0-rc.1",
     "globals": "^16.2.0",
+    "jsdom": "^26.1.0",
     "prettier": "^3.5.3",
     "typescript": "~5.8.3",
     "typescript-eslint": "^8.34.1",
-    "vite": "^6.3.5"
+    "vite": "^6.3.5",
+    "vitest": "^3.2.4"
   }
 }

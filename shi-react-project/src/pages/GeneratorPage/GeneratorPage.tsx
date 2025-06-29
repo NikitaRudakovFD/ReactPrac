@@ -23,7 +23,7 @@ export const GeneratorPage = () => {
 
   return (
     <>
-      <div className={$.container}>
+      <div className={$.container} data-testid="generator-page">
         <h2 className={$.title}>Сгенерируйте готовый csv-файл нажатием одной кнопки</h2>
         {generationStatus === 'default' && (
           <ButtonWithText

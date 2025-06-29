@@ -20,7 +20,7 @@ export const Input: FC<InputProps> = (props) => {
   return (
     <div className={$.defaultWrapper}>
       <div className={$.labelWrapper}>
-        <label className={`${$.label} ${$[status]}`}>
+        <label className={`${$.label} ${$[status]}`} >
           {status !== 'pending' ? title : <Loader loadStatus={status} />}
           <input
             disabled={['doneCreate', 'errorCreate'].includes(status)}
@@ -31,6 +31,7 @@ export const Input: FC<InputProps> = (props) => {
               if (!e.target.files?.[0]) return;
               handleFileSet(e.target.files?.[0]);
             }}
+           data-testid='inputFile'
           />
         </label>
 
@@ -43,7 +44,7 @@ export const Input: FC<InputProps> = (props) => {
           />
         )}
       </div>
-      <span className={status === 'error' || status === 'errorCreate' ? `${$.errorDescr}` : ''}>
+      <span data-testid='fileStatusDescr' className={status === 'error' || status === 'errorCreate' ? `${$.errorDescr}` : ''}>
         {descrByStatus[status]}
       </span>
     </div>

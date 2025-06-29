@@ -45,7 +45,7 @@ export const LoadFileArea: FC<LoadFileAreaProps> = (props) => {
           handleFileSet(e.dataTransfer.files?.[0]);
         }}
       >
-        <Input handleFileSet={handleFileSet} title={file?.name} status={formStatus} />
+        <Input handleFileSet={handleFileSet} title={file?.name} status={formStatus}  />
       </form>
 
       {formStatus !== 'pending' && formStatus !== 'done' && (
